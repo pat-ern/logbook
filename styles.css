@@ -1,0 +1,83 @@
+/*
+body and main layour
+*/
+
+/* global variables*/
+:root {
+    --background-light: #ebe9e9;
+    --background-dark: #252525;
+    --text-color: #333;
+    --text-dimmed: #555;
+    --text-light: #ebe9e9;
+}
+
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    color: var(--text-color)
+}
+
+
+.layout-container {
+    display: flex;
+    height: 100vh;
+}
+
+
+.sidebar {
+    background-color: var(--background-dark);
+    width: 15rem;
+    height: 100vh; /* 100% del viewport height */
+    color: var(--text-light);
+    transition: width 0.3s ease;
+}
+
+.sidebar.show {
+    width: 0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 1rem;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    transition: background-color 0.2s linear;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: var(--text-light);
+    text-wrap: nowrap;
+}
+
+.sidebar ul li a:hover {
+    color: #FFF;
+}
+
+.sidebar ul li:hover {
+    background-color: var(--text-dimmed);
+    cursor: pointer;
+}
+
+.content {
+    background-color: var(--background-light);
+    flex: 1;
+    padding: 1rem;
+}
+
+.button {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
