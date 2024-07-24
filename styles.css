@@ -4,19 +4,18 @@ body and main layour
 
 /* global variables*/
 :root {
-    --background-light: #ebe9e9;
-    --background-dark: #252525;
-    --text-color: #333;
-    --text-dimmed: #555;
-    --text-light: #ebe9e9;
+    --background-color: #f9f9f9;
+    --button-color: #d3d3d3;
+    --text-color-secondary: #555;
+    --text-color-primary: #252525;
 }
 
 body {
     margin: 0;
     font-family: "Roboto", sans-serif;
     font-style: normal;
-    font-size: 16px;
-    color: var(--text-color)
+    font-size: 20px;
+    color: var(--text-color-primary);
 }
 
 
@@ -27,10 +26,10 @@ body {
 
 
 .sidebar {
-    background-color: var(--background-dark);
+    background-color: var(--background-color);
     width: 15rem;
     height: 100vh; /* 100% del viewport height */
-    color: var(--text-light);
+    color: var(--text-color-primary);
     transition: width 0.3s ease;
 }
 
@@ -51,29 +50,20 @@ body {
 
 .sidebar ul li a {
     text-decoration: none;
-    color: var(--text-light);
+    color: var(--text-color-primary);
     text-wrap: nowrap;
 }
 
-.sidebar ul li a:hover {
-    color: #FFF;
-}
-
-.sidebar ul li:hover {
-    background-color: var(--text-dimmed);
-    cursor: pointer;
-}
-
 .content {
-    background-color: var(--background-light);
+    background-color: var(--background-color);
     flex: 1;
     padding: 1rem;
 }
 
 .button {
-    background-color: var(--background-dark);
-    color: var(--text-light);
-    border: none;
+    background-color: var(--button-color);
+    border: 1px solid var(--text-color-primary);
+    color: var(--text-color-primary);
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
