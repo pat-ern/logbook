@@ -1,20 +1,20 @@
-/*
-body and main layour
-*/
+@import url('assets/boxicons/css/boxicons.min.css');
 
 /* global variables*/
 :root {
-    --background-color: #f9f9f9;
+    --background-light: #f9f9f9;
+    --background-gray: #e2e2e2;
     --button-color: #d3d3d3;
-    --text-color-secondary: #555;
+    --text-color-light: #fff;
+    --text-color-dimmed: #555;
     --text-color-primary: #252525;
 }
 
 body {
     margin: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Monospace', monospace;
     font-style: normal;
-    font-size: 20px;
+    font-size: 14px;
     color: var(--text-color-primary);
 }
 
@@ -26,7 +26,7 @@ body {
 
 
 .sidebar {
-    background-color: var(--background-color);
+    background-color: var(--background-gray);
     width: 15rem;
     height: 100vh; /* 100% del viewport height */
     color: var(--text-color-primary);
@@ -44,30 +44,58 @@ body {
 }
 
 .sidebar ul li {
-    padding: 10px;
-    transition: background-color 0.2s 
+    border-radius: 0.2rem;
+    padding: 0.5rem;
+    transition: background-color 0.1s;
+}
+
+.sidebar ul li:hover {
+    background-color: var(--background-light);
 }
 
 .sidebar ul li a {
     text-decoration: none;
     color: var(--text-color-primary);
     text-wrap: nowrap;
+    cursor: default;
 }
 
 .content {
-    background-color: var(--background-color);
+    background-color: var(--background-light);
     flex: 1;
     padding: 1rem;
 }
 
-.button {
-    background-color: var(--button-color);
+.header {
+    height: 2.19rem;
+    width: 100%;
+    background-color: var(--background-light);
+    color: var(--text-color-primary);
+    display: inline-flex;
+    align-items: center;
+}
+
+.button#menu-toggle {
+    border-radius: 0.2rem;
+    height: 100%;
+    width: 2.3rem;
+    background-color: var(--background-gray);
     border: 1px solid var(--text-color-primary);
     color: var(--text-color-primary);
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
     display: inline-block;
-    font-size: 16px;
     cursor: pointer;
+}
+
+.title {
+    padding-left: 1rem;
+    font-size: 1.5rem;
+    user-select: none;
+}
+
+#menu-toggle>.bx {
+    font-size: 1.5rem;
+}
+
+li>a>.bx {
+    padding-right: 0.5rem;
 }

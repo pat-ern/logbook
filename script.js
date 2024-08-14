@@ -1,5 +1,5 @@
 // Obtenemos referencias a los elementos relevantes del DOM
-const toggleButton = document.getElementById('toggle-sidebar');
+const toggleButton = document.getElementById('menu-toggle');
 const sidebar = document.querySelector('.sidebar');
 
 let sidebarVisible = false; // Estado inicial del menú lateral
