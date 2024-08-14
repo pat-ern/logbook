@@ -4,10 +4,9 @@
 :root {
     --background-light: #f9f9f9;
     --background-gray: #e2e2e2;
-    --button-color: #d3d3d3;
     --text-color-light: #fff;
     --text-color-dimmed: #555;
-    --text-color-primary: #252525;
+    --text-color-dark: #252525;
 }
 
 body {
@@ -15,7 +14,7 @@ body {
     font-family: 'Monospace', monospace;
     font-style: normal;
     font-size: 14px;
-    color: var(--text-color-primary);
+    color: var(--text-color-dark);
 }
 
 .layout-container {
@@ -28,7 +27,7 @@ body {
     background-color: var(--background-gray);
     width: 11rem;
     height: 100vh;
-    color: var(--text-color-primary);
+    color: var(--text-color-dark);
     transition: width 0.3s ease;
     border-right: 0.1rem solid black;
 }
@@ -49,15 +48,11 @@ body {
     transition: background-color 0.1s;
 }
 
-.sidebar ul li:hover {
-    background-color: var(--background-light);
-}
-
 .sidebar ul li a {
     text-decoration: none;
-    color: var(--text-color-primary);
+    color: var(--text-color-dark);
     text-wrap: nowrap;
-    cursor: default;
+    
 }
 
 .content {
@@ -70,7 +65,7 @@ body {
     height: 2.19rem;
     width: 100%;
     background-color: var(--background-light);
-    color: var(--text-color-primary);
+    color: var(--text-color-dark);
     display: inline-flex;
     align-items: center;
 }
@@ -81,7 +76,7 @@ body {
     width: 2.5rem;
     background-color: var(--background-light);
     border: none;
-    color: var(--text-color-primary);
+    color: var(--text-color-dark);
     display: inline-block;
     cursor: pointer;
 }
@@ -92,6 +87,8 @@ body {
     font-size: 1.5rem;
     user-select: none;
     padding-bottom: 0.15rem;
+    width: 100%;
+    text-align: end
 }
 
 #menu-toggle>.bx {
