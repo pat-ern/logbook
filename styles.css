@@ -78,9 +78,9 @@ body {
 .button#menu-toggle {
     border-radius: 0.2rem;
     height: 100%;
-    width: 2.3rem;
-    background-color: var(--background-gray);
-    border: 1px solid var(--text-color-primary);
+    width: 2.5rem;
+    background-color: var(--background-light);
+    border: none;
     color: var(--text-color-primary);
     display: inline-block;
     cursor: pointer;
@@ -91,10 +91,11 @@ body {
     margin: 0;
     font-size: 1.5rem;
     user-select: none;
+    padding-bottom: 0.15rem;
 }
 
 #menu-toggle>.bx {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
 }
 
 li>a>.bx {
