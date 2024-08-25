@@ -9,9 +9,9 @@ toggleButton.addEventListener('click', function() {
     sidebarVisible = !sidebarVisible; // Cambiamos el estado del menú lateral
     
     if (sidebarVisible) {
-        sidebar.classList.add('show'); // Mostramos el menú lateral
+        sidebar.classList.add('hidden'); // Mostramos el menú lateral
     } else {
-        sidebar.classList.remove('show'); // Ocultamos el menú lateral
+        sidebar.classList.remove('hidden'); // Ocultamos el menú lateral
     }
 });
 

@@ -24,7 +24,7 @@ body {
     border-right: 0.1rem solid black;
 }
 
-.sidebar.show {
+.sidebar.hidden {
     width: 0;
 }
 
