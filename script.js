@@ -14,3 +14,20 @@ toggleButton.addEventListener('click', function() {
         sidebar.classList.remove('show'); // Ocultamos el menú lateral
     }
 });
+
+// seteo de titulo de la pagina
+const menuItems = document.querySelectorAll('.menu-item');
+const headerTitle = document.querySelector('.header-title');
+
+menuItems.forEach(item => {
+    console.log(item);	
+    item.addEventListener('click', () => {
+        menuItems.forEach(item => item.classList.remove('active'));
+        // set header title with menu item title text
+        headerTitle.textContent = item.textContent;
+    });
+})
+
+headerTitle.textContent = menuItems[0].textContent;
+
+// click on blog title

@@ -41,10 +41,10 @@ body {
 }
 
 .sidebar ul li a {
-    text-decoration: none;
+    /* text-decoration: none; */
     color: var(--text-color-dark);
     text-wrap: nowrap;
-    
+    user-select: none;
 }
 
 .content {
@@ -68,12 +68,13 @@ body {
     width: 2.5rem;
     background-color: var(--background-light);
     border: none;
-    color: var(--text-color-dark);
+    color: var(--color-primary);
     display: inline-block;
     cursor: pointer;
 }
 
-.title {
+.site-title {
+    color: var(--color-primary);
     padding: 0 0.5rem;
     margin: 0;
     font-size: 1.5rem;
@@ -88,5 +89,23 @@ body {
 }
 
 li>a>.bx {
+    color: var(--color-primary);
     padding-right: 0.5rem;
+}
+
+.column {
+    max-width: 40rem;
+}
+
+.column-title {
+    font-weight: 500;
+}
+
+.column-paragraph {
+}
+
+.header-title {
+    user-select: none;
+    font-weight: 500;
+    margin-left: 1rem;
 }
