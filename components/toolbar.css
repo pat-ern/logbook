@@ -4,7 +4,6 @@
     padding: var(--standard-padding);
     height: var(--toolbar-height);
     width: 100%;
-    background-color: inherit;
     color: var(--color-dark);
     display: inline-flex;
     align-items: center;
