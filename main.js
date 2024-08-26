@@ -14,16 +14,9 @@ const SIDEBAR = document.querySelector('.sidebar');
  * @param {HTMLElement} menuItem - The menu item element that triggered the click event.
  * @return {void}
  */
-function menuClickCallBack(toolbarTitle, menuItem) {
-    toolbarTitle.textContent = menuItem.textContent;
-    if (menuItem.textContent === 'Blog') {
-        if (COLUMN_ELEMENT.childElementCount !== 0) {
-            return
-        }
-        renderBlog();
-    } else {
-        cleanPage()
-    }
+function menuClickCallBack(menuItem) {
+    window.localStorage.setItem('page', menuItem.textContent);
+    renderPage(menuItem.textContent);
 }
 
 /**
@@ -33,7 +26,7 @@ function menuClickCallBack(toolbarTitle, menuItem) {
  */
 function initMenuListeners() {
     MENU_ITEMS.forEach(item => {
-        item.addEventListener('click', menuClickCallBack.bind(null, TOOLBAR_TITLE, item));
+        item.addEventListener('click', menuClickCallBack.bind(null, item));
     })
 }
 
@@ -73,7 +66,7 @@ function renderBlog() {
  * @return {void}
  */
 function addTitle(title) {
-    const header = document.createElement('h2');
+    const header = document.createElement('h3');
     header.classList.add('column-title');
     header.textContent = title;
     COLUMN_ELEMENT.appendChild(header);
@@ -100,7 +93,23 @@ function cleanPage() {
     }
 }
 
+function renderPage(page) {
+    TOOLBAR_TITLE.textContent = page;
+    cleanPage();
+    if (page === 'Blog') {
+        renderBlog();
+    }
+}
+
+function renderLastPage() {
+    const lastPage = window.localStorage.getItem('page');
+    if (lastPage) {
+        renderPage(lastPage);
+    }
+}
+
 // 
 
 initMenuListeners();
 initMenuButtonListener();
+renderLastPage();
