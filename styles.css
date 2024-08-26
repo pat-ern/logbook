@@ -2,10 +2,13 @@
 @import url('assets/boxicons/css/boxicons.min.css');
 
 :root {
-    --toolbar-height: 2.2rem;
+    --toolbar-height: 3rem;
     --standard-padding: 0.5rem;
     --separator: 0.1rem solid var(--color-dimmed);
-    --blog-width: min(93vw, 40rem);
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -33,11 +36,14 @@ h6 {
 
 /* SIDEBAR */
 
+.logo-section {
+    height: var(--toolbar-height);
+    border-bottom: var(--separator);
+}
+
 .sidebar {
-    padding-top: calc(var(--toolbar-height) + (var(--standard-padding) * 2));
+    width: 10rem;
     background-color: var(--color-dark);
-    width: 11rem;
-    height: 100vh;
     color: var(--color-dark);
     transition: width 0.3s ease;
     border-right: var(--separator);
@@ -45,13 +51,13 @@ h6 {
 
 .sidebar.hidden {
     width: 0;
+    min-width: none;
 }
 
 .sidebar ul {
     list-style-type: none;
     padding: var(--standard-padding);
     margin: 0;
-    border-top: var(--separator);
 }
 
 .sidebar ul li {
@@ -75,7 +81,7 @@ li>a>.bx {
 
 .content {
     background-color: var(--color-dark);
-    flex: 1;
+    width: 100%;
 }
 
 /* TOOLBAR */
@@ -117,26 +123,22 @@ li>a>.bx {
 
 .template {
     padding: 1.25rem;
-    width: var(--blog-width);
     background-color: var(--color-dark);
-    height: calc(100vh - 5rem);
 }
 
 /* BLOG */
 
 .column-title {
     color: var(--color-light);
-    font-weight: 500;
-    width: var(--blog-width);
+    font-weight: 600;
+    width: min(100%, 30rem);
 }
 
 .column-paragraph {
     color: var(--color-light);
-    width: var(--blog-width);
-}
-
-.column-image {
-    width: var(--blog-width);
+    text-align: justify;
+    text-justify: inter-word;
+    width: min(100%, 30rem);
 }
 
 .separator {
