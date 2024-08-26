@@ -1,0 +1,51 @@
+/* TOOLBAR */
+
+.toolbar {
+    padding: var(--standard-padding);
+    height: var(--toolbar-height);
+    width: 100%;
+    background-color: var(--color-dark);
+    color: var(--color-dark);
+    display: inline-flex;
+    align-items: center;
+    border-bottom: var(--separator);
+}
+
+.toolbar-title {
+    text-transform: capitalize;
+    user-select: none;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    color: var(--color-light);
+}
+
+.button#menu-toggle {
+    height: 100%;
+    width: 2.5rem;
+    background-color: var(--color-dark);
+    border: none;
+    color: var(--color-dimmed);
+    display: inline-block;
+    cursor: pointer;
+}
+
+.button#theme-toggle {
+    margin-left: auto;
+    height: 100%;
+    width: 2.5rem;
+    background-color: var(--color-dark);
+    border: none;
+    color: var(--color-dimmed);
+    display: inline-block;
+    cursor: pointer;
+}
+
+#menu-toggle>.bx {
+    color: var(--color-soft);
+    font-size: 1.75rem;
+}
+
+#theme-toggle>.bx {
+    color: var(--color-soft);
+    font-size: 1.75rem;
+}
