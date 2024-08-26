@@ -9,6 +9,7 @@
 
 * {
     box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
 body {
@@ -46,7 +47,6 @@ h6 {
     width: 12rem;
     background-color: var(--color-dark);
     color: var(--color-dark);
-    transition: all 0.3s ease;
     border-right: var(--separator);
 }
 
@@ -62,6 +62,7 @@ h6 {
 }
 
 .sidebar ul li {
+    cursor: pointer;
     text-transform: capitalize;
     text-decoration: none;
     color: var(--color-light);
@@ -70,11 +71,10 @@ h6 {
     padding: var(--standard-padding);
     background-color: var(--color-dark);
     border-radius: var(--border-radius);
-    transition: background-color 0.1s;
 }
 
 .sidebar ul li:hover {
-    background-color: #ffffff05;
+    background-color: var(--surface-hover);
 }
 
 li>.bx {
@@ -120,7 +120,23 @@ li>.bx {
     cursor: pointer;
 }
 
+.button#theme-toggle {
+    margin-left: auto;
+    height: 100%;
+    width: 2.5rem;
+    background-color: var(--color-dark);
+    border: none;
+    color: var(--color-dimmed);
+    display: inline-block;
+    cursor: pointer;
+}
+
 #menu-toggle>.bx {
+    color: var(--color-soft);
+    font-size: 1.75rem;
+}
+
+#theme-toggle>.bx {
     color: var(--color-soft);
     font-size: 1.75rem;
 }
@@ -137,7 +153,7 @@ li>.bx {
 .blog-box {
     padding: calc(var(--standard-padding) *2);
     width: min(100%, 35rem);
-    background-color: #ffffff05;
+    background-color: var(--surface-hover);
     border-radius: var(--border-radius);
 }
 

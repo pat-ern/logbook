@@ -1,12 +1,27 @@
 // -----------------------------------------------------------------
 // GLOBAL VARIABLES
+const MY_NAME = 'Patricio V.';
+
+const THEME_KEY = 'theme';
+const PAGE_KEY = 'page';
+
+const DARK_THEME = 'dark';
+const MOON_ICON = 'bx-moon';
+const LIGHT_THEME = 'light';
+const SUN_ICON = 'bx-sun';
 
 const TEMPLATE = document.querySelector('.template');
-const MENU_ITEMS = document.querySelectorAll('.menu-item');
-const MENU_LIST = document.querySelector('.menu-list');
-const TOOLBAR_TITLE = document.querySelector('.toolbar-title');
-const TOGGLE_BUTTON = document.getElementById('menu-toggle');
+
+// SIDEBAR AND MENU
 const SIDEBAR = document.querySelector('.sidebar');
+const MENU_LIST = document.querySelector('.menu-list');
+const MENU_ITEMS = document.querySelectorAll('.menu-item');
+
+// TOOLBAR
+const MENU_BUTTON = document.getElementById('menu-toggle');
+const TOOLBAR_TITLE = document.querySelector('.toolbar-title');
+const THEME_BUTTON = document.getElementById('theme-toggle');
+const THEME_ICON = THEME_BUTTON.querySelector('i');
 
 // -----------------------------------------------------------------
 
@@ -72,9 +87,9 @@ function setAppTitle(title) {
     const APP_TITLE = document.getElementsByTagName('title')[0];
     let pageTitle;
     if (title) {
-        pageTitle = `${title.charAt(0).toUpperCase() + title.slice(1)} | Patricio Villarroel`;
+        pageTitle = `${title.charAt(0).toUpperCase() + title.slice(1)} | ${MY_NAME}`;
     } else {
-        pageTitle = 'Patricio Villarroel';
+        pageTitle = MY_NAME;
     }
     APP_TITLE.textContent = pageTitle;
 }
@@ -103,7 +118,7 @@ function initMenu() {
  */
 function initMenuButtonListener() {
     let sidebarVisible = false; // Estado inicial del menú lateral
-    TOGGLE_BUTTON.addEventListener('click', function() {
+    MENU_BUTTON.addEventListener('click', function() {
         sidebarVisible = !sidebarVisible; // Cambiamos el estado del menú lateral
         if (sidebarVisible) {
             SIDEBAR.classList.add('hidden'); // Mostramos el menú lateral
@@ -111,6 +126,50 @@ function initMenuButtonListener() {
             SIDEBAR.classList.remove('hidden'); // Ocultamos el menú lateral
         }
     });
+}
+
+function updateIcon(theme) {
+    if (theme === 'light') {
+        THEME_ICON.classList.remove(MOON_ICON);
+        THEME_ICON.classList.add(SUN_ICON);
+    } else {
+        THEME_ICON.classList.remove(SUN_ICON);
+        THEME_ICON.classList.add(MOON_ICON);
+    }
+}
+
+// -----------------------------------------------------------------
+// THEME FUNCTIONS
+
+function applyTheme(theme) {
+    updateIcon(theme);
+    window.localStorage.setItem(THEME_KEY, theme);
+    const THEME_LINK = document.getElementById('theme-link');
+    THEME_LINK.href = `assets/themes/${theme}-theme.css`;
+}
+
+function loadTheme() {
+    const CURRENT_THEME = window.localStorage.getItem(THEME_KEY);
+    if (CURRENT_THEME) {
+        applyTheme(CURRENT_THEME);
+    } else {
+        applyTheme(DARK_THEME);
+    }
+}
+
+function toggleTheme() {
+    let theme = window.localStorage.getItem(THEME_KEY);
+    theme = theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
+    applyTheme(theme);
+}
+
+/**
+ * Initializes the event listener for the theme toggle button.
+ * 
+ * @return {void}
+ */
+function initThemeButtonListener() {
+    THEME_BUTTON.addEventListener('click', toggleTheme);
 }
 
 // -----------------------------------------------------------------
@@ -207,7 +266,7 @@ function defaultRenders(page) {
     setAppTitle(page);
     TOOLBAR_TITLE.textContent = page;
     cleanPage();
-    window.localStorage.setItem('page', page);
+    window.localStorage.setItem(PAGE_KEY, page);
 }
 
 /**
@@ -216,7 +275,7 @@ function defaultRenders(page) {
  * @return {void}
  */
 function renderLastPage() {
-    const lastPage = window.localStorage.getItem('page');
+    const lastPage = window.localStorage.getItem(PAGE_KEY);
     if (lastPage) {
         MENU.forEach(item => {
             if (item.name === lastPage) {
@@ -233,3 +292,5 @@ function renderLastPage() {
 initMenu();
 initMenuButtonListener();
 renderLastPage();
+loadTheme();
+initThemeButtonListener();

@@ -1,5 +1,6 @@
 /* global variables*/
 :root {
+    --surface-hover: #ffffff0a;
     --color-white: #fff;
     --color-light: #dbdbdb;
     --color-soft: #e2e2e2a2;
