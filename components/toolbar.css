@@ -4,7 +4,6 @@
     padding: var(--standard-padding);
     height: var(--toolbar-height);
     width: 100%;
-    background-color: var(--color-dark);
     color: var(--color-dark);
     display: inline-flex;
     align-items: center;
@@ -12,17 +11,23 @@
 }
 
 .toolbar-title {
-    text-transform: capitalize;
+    line-height: 1.4;
+    font-size: 1.4rem;
+    height: 100%;
+    text-transform: uppercase;
     user-select: none;
     font-weight: 500;
     margin-left: 0.5rem;
     color: var(--color-light);
+    &:hover {
+        color: var(--color-white);
+    }
 }
 
 .button#menu-toggle {
     height: 100%;
     width: 2.5rem;
-    background-color: var(--color-dark);
+    background-color: inherit;
     border: none;
     color: var(--color-dimmed);
     display: inline-block;
@@ -33,7 +38,7 @@
     margin-left: auto;
     height: 100%;
     width: 2.5rem;
-    background-color: var(--color-dark);
+    background-color: inherit;
     border: none;
     color: var(--color-dimmed);
     display: inline-block;
@@ -43,9 +48,15 @@
 #menu-toggle>.bx {
     color: var(--color-soft);
     font-size: 1.75rem;
+    &:hover {
+        color: var(--color-light);
+    }
 }
 
 #theme-toggle>.bx {
     color: var(--color-soft);
     font-size: 1.75rem;
+    &:hover {
+        color: var(--color-light);
+    }
 }

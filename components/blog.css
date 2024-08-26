@@ -1,6 +1,8 @@
 /* BLOG */
 
 .blog-box {
+    overflow: auto;
+    height: calc(100vh - var(--toolbar-height) - var(--standard-padding)*2);
     padding: calc(var(--standard-padding) *2);
     width: min(100%, 35rem);
     background-color: var(--surface-hover);
@@ -10,11 +12,14 @@
 .column-title {
     color: var(--color-light);
     font-weight: 600;
+    margin-bottom: calc(var(--standard-padding) *2);
 }
 
 .column-paragraph {
+    line-height: 1.2;
     color: var(--color-light);
     text-align: justify;
+    margin-bottom: calc(var(--standard-padding) *2);
 }
 
 .separator {
@@ -26,6 +31,4 @@
     font-weight: 500;
     font-style: italic;
     text-align: end;
-    margin-block-start: 0;
-    margin-block-end: 0;
 }
