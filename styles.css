@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 100vh;
 }
 
-.content {
+.main {
     background-color: var(--color-dark);
     width: 100%;
 }
