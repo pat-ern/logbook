@@ -55,8 +55,16 @@ function initMenuButtonListener() {
  * @return {void} This function does not return anything.
  */
 function renderBlog() {
+    addBlogBox();
     addTitle('Modules');
     addParagraph('Modules have also solved the issue of “namespace pollution”. What is namespace pollution you ask? This is a situation where completely unrelated code share a global variable. Sharing of global variables by unrelated code is not desired. Modules prevent this by creating a private location/space for variables.');
+    addPostDate();
+}
+
+function addBlogBox() {
+    const blogBox = document.createElement('div');
+    blogBox.classList.add('blog-box');
+    COLUMN_ELEMENT.appendChild(blogBox);
 }
 
 /**
@@ -66,10 +74,11 @@ function renderBlog() {
  * @return {void}
  */
 function addTitle(title) {
+    const blogBox = document.querySelector('.blog-box');
     const header = document.createElement('h3');
     header.classList.add('column-title');
     header.textContent = title;
-    COLUMN_ELEMENT.appendChild(header);
+    blogBox.appendChild(header);
 }
 
 /**
@@ -79,10 +88,22 @@ function addTitle(title) {
  * @return {void}
  */
 function addParagraph(text) {
+    const blogBox = document.querySelector('.blog-box');
     const paragraph = document.createElement('p');
     paragraph.classList.add('column-paragraph');
     paragraph.textContent = text;
-    COLUMN_ELEMENT.appendChild(paragraph);
+    blogBox.appendChild(paragraph);
+}
+
+function addPostDate() {
+    const blogBox = document.querySelector('.blog-box');
+    const date = new Date();
+    const dateString = date.getHours() + ':' + date.getMinutes() + ' ' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+    const paragraph = document.createElement('p');
+    paragraph.classList.add('column-paragraph');
+    paragraph.classList.add('blog-date');
+    paragraph.textContent = dateString;
+    blogBox.appendChild(paragraph);
 }
 
 // -----------------------------------------------------------------

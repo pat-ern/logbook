@@ -14,6 +14,7 @@
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
+    /* font-family: 'Monospace', monospace; */
     font-style: normal;
     font-size: 14px;
     color: var(--color-dark);
@@ -42,16 +43,16 @@ h6 {
 }
 
 .sidebar {
-    width: 10rem;
+    width: 12rem;
     background-color: var(--color-dark);
     color: var(--color-dark);
-    transition: width 0.3s ease;
+    transition: all 0.3s ease;
     border-right: var(--separator);
 }
 
 .sidebar.hidden {
     width: 0;
-    min-width: none;
+    border-right: none;
 }
 
 .sidebar ul {
@@ -122,25 +123,38 @@ li>a>.bx {
 /* DYNAMIC TEMPLATE */
 
 .template {
-    padding: 1.25rem;
+    padding: var(--standard-padding);
     background-color: var(--color-dark);
 }
 
 /* BLOG */
 
+.blog-box {
+    padding: calc(var(--standard-padding) *2);
+    width: min(100%, 35rem);
+    background-color: #ffffff05;
+    border-radius: 5px;
+}
+
 .column-title {
     color: var(--color-light);
     font-weight: 600;
-    width: min(100%, 30rem);
 }
 
 .column-paragraph {
     color: var(--color-light);
     text-align: justify;
-    text-justify: inter-word;
-    width: min(100%, 30rem);
 }
 
 .separator {
-   border-color: var(--color-dimmed);
+    border-color: var(--color-dimmed);
+}
+
+.blog-date {
+    color: var(--color-light);
+    font-weight: 500;
+    font-style: italic;
+    text-align: end;
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
