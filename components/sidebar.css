@@ -10,7 +10,7 @@
 }
 
 .logo {
-    background-image: linear-gradient(to right, #c2a1cf 25%, #86a9df);
+    background-image: linear-gradient(to right, var(--gradient-start) 50%, var(--gradient-end));
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
@@ -22,7 +22,7 @@
     font-weight: 700;
     text-wrap: nowrap;
     &:hover {
-        background-image: linear-gradient(to right, #86a9df 25%, #c2a1cf);
+        background-image: linear-gradient(to left, var(--gradient-start)  50%, var(--gradient-end));
     }
 }
 

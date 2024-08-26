@@ -1,9 +1,12 @@
 /* global variables*/
 :root {
+    --gradient-start: #fcb276;
+    --gradient-end: #ffd000;
+    
     --surface-hover: #ffffff0a;
     --color-white: #fff;
     --color-light: #dbdbdb;
     --color-soft: #e2e2e2a2;
     --color-dimmed: #4d4d4d;
-    --color-dark: #252525;
+    --color-dark: #292825;
 }
