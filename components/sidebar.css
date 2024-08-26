@@ -3,6 +3,31 @@
 .logo-section {
     height: var(--toolbar-height);
     border-bottom: var(--separator);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: var(--standard-padding);
+}
+
+.logo {
+    background-image: linear-gradient(to right, #c2a1cf 25%, #86a9df);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    padding: var(--standard-padding);
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    user-select: none;
+    font-weight: 700;
+    text-wrap: nowrap;
+    &:hover {
+        background-image: linear-gradient(to right, #86a9df 25%, #c2a1cf);
+    }
+}
+
+.favicon {
+    padding: calc(var(--standard-padding)/2);
 }
 
 .sidebar {
@@ -24,20 +49,23 @@
 
 .sidebar ul li {
     cursor: pointer;
-    text-transform: capitalize;
+    text-transform: uppercase;
     text-decoration: none;
     color: var(--color-light);
     text-wrap: nowrap;
     user-select: none;
     padding: var(--standard-padding);
     border-radius: var(--border-radius);
+    &>.bx {
+        color: var(--color-soft);
+        padding-right: var(--standard-padding);
+    }
 }
 
 .sidebar ul li:hover {
     background-color: var(--surface-hover);
-}
-
-li>.bx {
-    color: var(--color-light);
-    padding-right: var(--standard-padding);
+    color: var(--color-white);
+    &>.bx {
+        color: var(--color-light);
+    }
 }

@@ -11,11 +11,17 @@
 }
 
 .toolbar-title {
-    text-transform: capitalize;
+    line-height: 1.4;
+    font-size: 1.4rem;
+    height: 100%;
+    text-transform: uppercase;
     user-select: none;
     font-weight: 500;
     margin-left: 0.5rem;
     color: var(--color-light);
+    &:hover {
+        color: var(--color-white);
+    }
 }
 
 .button#menu-toggle {
@@ -42,9 +48,15 @@
 #menu-toggle>.bx {
     color: var(--color-soft);
     font-size: 1.75rem;
+    &:hover {
+        color: var(--color-light);
+    }
 }
 
 #theme-toggle>.bx {
     color: var(--color-soft);
     font-size: 1.75rem;
+    &:hover {
+        color: var(--color-light);
+    }
 }

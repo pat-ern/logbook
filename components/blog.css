@@ -10,11 +10,13 @@
 .column-title {
     color: var(--color-light);
     font-weight: 600;
+    margin-bottom: calc(var(--standard-padding) *2);
 }
 
 .column-paragraph {
     color: var(--color-light);
     text-align: justify;
+    margin-bottom: calc(var(--standard-padding) *2);
 }
 
 .separator {
@@ -26,6 +28,4 @@
     font-weight: 500;
     font-style: italic;
     text-align: end;
-    margin-block-start: 0;
-    margin-block-end: 0;
 }
