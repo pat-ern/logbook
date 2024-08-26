@@ -1,32 +1,98 @@
-const COLUMN_ELEMENT = document.querySelector('.template');
+// -----------------------------------------------------------------
+// GLOBAL VARIABLES
+
+const TEMPLATE = document.querySelector('.template');
 const MENU_ITEMS = document.querySelectorAll('.menu-item');
+const MENU_LIST = document.querySelector('.menu-list');
 const TOOLBAR_TITLE = document.querySelector('.toolbar-title');
 const TOGGLE_BUTTON = document.getElementById('menu-toggle');
 const SIDEBAR = document.querySelector('.sidebar');
 
 // -----------------------------------------------------------------
-// APP RENDERING FUNCTIONS
 
 /**
- * Updates the text content of a header title element based on a menu item click event.
- *
- * @param {HTMLElement} toolbarTitle - The toolbar title element to update.
- * @param {HTMLElement} menuItem - The menu item element that triggered the click event.
- * @return {void}
+ * Menu items array.
  */
-function menuClickCallBack(menuItem) {
-    window.localStorage.setItem('page', menuItem.textContent);
-    renderPage(menuItem.textContent);
+const MENU = [
+    {
+        name: 'blog',
+        icon: 'bx bx-notepad',
+        callback: () => {
+            renderBlog();
+        }
+    },
+    {
+        name: 'photography',
+        icon: 'bx bx-landscape',
+        callback: () => {
+            defaultRenders('photography');	
+        }
+    },
+    {
+        name: 'clips',
+        icon: 'bx bx-video-recording',
+        callback: () => {
+            defaultRenders('clips');
+        }
+    },
+    {
+        name: 'sketchbook',
+        icon: 'bx bx-pen',
+        callback: () => {
+            defaultRenders('sketchbook');
+        }
+    },
+    {
+        name: 'music',
+        icon: 'bx bx-music',
+        callback: () => {
+            defaultRenders('music');
+        }
+    },
+    {
+        name: 'comments',
+        icon: 'bx bx-bible',	
+        callback: () => {
+            defaultRenders('comments');
+        }
+    },
+    {
+        name: 'contact',
+        icon: 'bx bx-message-dots',
+        callback: () => {
+            defaultRenders('contact');
+        }
+    }
+]
+
+// -----------------------------------------------------------------
+// INITIALIZATION FUNCTIONS
+
+function setAppTitle(title) {
+    const APP_TITLE = document.getElementsByTagName('title')[0];
+    let pageTitle;
+    if (title) {
+        pageTitle = `${title.charAt(0).toUpperCase() + title.slice(1)} | Patricio Villarroel`;
+    } else {
+        pageTitle = 'Patricio Villarroel';
+    }
+    APP_TITLE.textContent = pageTitle;
 }
 
 /**
- * Initializes event listeners for menu items
+ * Initializes the menu by creating and appending list items to the menu list.
+ * Each list item is associated with a callback function that is triggered on click.
  *
  * @return {void}
  */
-function initMenuListeners() {
-    MENU_ITEMS.forEach(item => {
-        item.addEventListener('click', menuClickCallBack.bind(null, item));
+function initMenu() {
+    MENU.forEach(item => {
+        const menuItem = document.createElement('li');
+        menuItem.classList.add('menu-item');
+        menuItem.setAttribute('draggable', 'false');
+        menuItem.innerHTML = `<i class='${item.icon}'></i> ${item.name}`;
+        MENU_LIST.appendChild(menuItem);
+        menuItem.addEventListener('click', item.callback);
     })
 }
 
@@ -55,16 +121,22 @@ function initMenuButtonListener() {
  * @return {void} This function does not return anything.
  */
 function renderBlog() {
+    defaultRenders('blog');
     addBlogBox();
     addTitle('Modules');
     addParagraph('Modules have also solved the issue of “namespace pollution”. What is namespace pollution you ask? This is a situation where completely unrelated code share a global variable. Sharing of global variables by unrelated code is not desired. Modules prevent this by creating a private location/space for variables.');
     addPostDate();
 }
 
+/**
+ * Creates a new div element with the class 'blog-box' and appends it to the TEMPLATE element.
+ *
+ * @return {void}
+ */
 function addBlogBox() {
     const blogBox = document.createElement('div');
     blogBox.classList.add('blog-box');
-    COLUMN_ELEMENT.appendChild(blogBox);
+    TEMPLATE.appendChild(blogBox);
 }
 
 /**
@@ -95,6 +167,11 @@ function addParagraph(text) {
     blogBox.appendChild(paragraph);
 }
 
+/**
+ * Adds a paragraph element to the blog box with the current date.
+ *
+ * @return {void}
+ */
 function addPostDate() {
     const blogBox = document.querySelector('.blog-box');
     const date = new Date();
@@ -107,30 +184,52 @@ function addPostDate() {
 }
 
 // -----------------------------------------------------------------
+// GENERIC PAGE RENDERING FUNCTIONS
 
+/**
+ * Removes all child nodes from the `TEMPLATE` element.
+ *
+ * @return {void}
+ */
 function cleanPage() {
-    while (COLUMN_ELEMENT.firstChild) {
-        COLUMN_ELEMENT.removeChild(COLUMN_ELEMENT.firstChild);
+    while (TEMPLATE.firstChild) {
+        TEMPLATE.removeChild(TEMPLATE.firstChild);
     }
 }
 
-function renderPage(page) {
+/**
+ * Sets the default render state for the given page.
+ *
+ * @param {string} page - The name of the page to render.
+ * @return {void}
+ */
+function defaultRenders(page) {
+    setAppTitle(page);
     TOOLBAR_TITLE.textContent = page;
     cleanPage();
-    if (page === 'Blog') {
-        renderBlog();
-    }
+    window.localStorage.setItem('page', page);
 }
 
+/**
+ * Renders the last page based on the stored page name in local storage.
+ *
+ * @return {void}
+ */
 function renderLastPage() {
     const lastPage = window.localStorage.getItem('page');
     if (lastPage) {
-        renderPage(lastPage);
+        MENU.forEach(item => {
+            if (item.name === lastPage) {
+                item.callback();
+            }
+        })
+    } else {
+        MENU[0].callback();
     }
 }
 
-// 
+// MAIN FUNCTION AND EXECUTION
 
-initMenuListeners();
+initMenu();
 initMenuButtonListener();
 renderLastPage();

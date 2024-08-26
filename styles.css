@@ -1,10 +1,10 @@
-@import url('assets/themes/dark-theme.css');
 @import url('assets/boxicons/css/boxicons.min.css');
 
 :root {
     --toolbar-height: 3rem;
     --standard-padding: 0.5rem;
     --separator: 0.1rem solid var(--color-dimmed);
+    --border-radius: 0.25rem;
 }
 
 * {
@@ -62,18 +62,22 @@ h6 {
 }
 
 .sidebar ul li {
-    padding: var(--standard-padding);
-    transition: background-color 0.1s;
-}
-
-.sidebar ul li a {
+    text-transform: capitalize;
     text-decoration: none;
     color: var(--color-light);
     text-wrap: nowrap;
     user-select: none;
+    padding: var(--standard-padding);
+    background-color: var(--color-dark);
+    border-radius: var(--border-radius);
+    transition: background-color 0.1s;
 }
 
-li>a>.bx {
+.sidebar ul li:hover {
+    background-color: #ffffff05;
+}
+
+li>.bx {
     color: var(--color-light);
     padding-right: var(--standard-padding);
 }
@@ -99,6 +103,7 @@ li>a>.bx {
 }
 
 .toolbar-title {
+    text-transform: capitalize;
     user-select: none;
     font-weight: 500;
     margin-left: 0.5rem;
@@ -133,7 +138,7 @@ li>a>.bx {
     padding: calc(var(--standard-padding) *2);
     width: min(100%, 35rem);
     background-color: #ffffff05;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
 }
 
 .column-title {
