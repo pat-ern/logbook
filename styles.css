@@ -17,9 +17,9 @@
 
 body {
     margin: 0;
-    font-family: 'Monospace', monospace;
+    font-family: 'PT Sans', sans-serif;
     font-style: normal;
-    font-size: 16px;
+    font-size: 15px;
     color: var(--color-dark);
 }
 

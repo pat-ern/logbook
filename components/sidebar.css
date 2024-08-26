@@ -58,7 +58,7 @@
     border-radius: var(--border-radius);
     &>.bx {
         color: var(--color-soft);
-        padding-right: var(--standard-padding);
+        padding-right: calc(var(--standard-padding)/2);
     }
 }
 

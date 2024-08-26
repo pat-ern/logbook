@@ -1,3 +1,7 @@
+// fetch a url and console log the response
+
+
+
 // -----------------------------------------------------------------
 // GLOBAL VARIABLES
 const MY_NAME = 'Patricio V.';
@@ -22,6 +26,28 @@ const MENU_BUTTON = document.getElementById('menu-toggle');
 const TOOLBAR_TITLE = document.querySelector('.toolbar-title');
 const THEME_BUTTON = document.getElementById('theme-toggle');
 const THEME_ICON = THEME_BUTTON.querySelector('i');
+
+
+// -----------------------------------------------------------------
+
+function fetchBlogContent(id) {
+    const base = "https://raw.githubusercontent.com/pat-ern/md-for-fetch/main/";
+    fetch(base + id)
+    .then(response => response.text())
+    .then(mdContent => {
+        const content = mdContent.split('\n\n');
+        const title = content[0];
+        const length = content.length;
+        const date = content[length - 1];
+        const paragraphs = content.slice(1, length - 1);
+        addTitle(title);
+        paragraphs.forEach(paragraph => {
+            addParagraph(paragraph);
+        })
+        addPostDate(date);
+    })
+    .catch(error => console.error('Error al obtener el archivo:', error));
+}
 
 // -----------------------------------------------------------------
 
@@ -182,9 +208,8 @@ function initThemeButtonListener() {
 function renderBlog() {
     defaultRenders('blog');
     addBlogBox();
-    addTitle('Modules');
-    addParagraph('Modules have also solved the issue of “namespace pollution”. What is namespace pollution you ask? This is a situation where completely unrelated code share a global variable. Sharing of global variables by unrelated code is not desired. Modules prevent this by creating a private location/space for variables.');
-    addPostDate();
+    fetchBlogContent('001');
+    fetchBlogContent('002');
 }
 
 /**
@@ -231,14 +256,12 @@ function addParagraph(text) {
  *
  * @return {void}
  */
-function addPostDate() {
+function addPostDate(date) {
     const blogBox = document.querySelector('.blog-box');
-    const date = new Date();
-    const dateString = date.getHours() + ':' + date.getMinutes() + ' ' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
     const paragraph = document.createElement('p');
     paragraph.classList.add('column-paragraph');
     paragraph.classList.add('blog-date');
-    paragraph.textContent = dateString;
+    paragraph.textContent = date;
     blogBox.appendChild(paragraph);
 }
 
