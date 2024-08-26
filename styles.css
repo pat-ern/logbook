@@ -3,8 +3,9 @@
 
 :root {
     --toolbar-height: 2.2rem;
-    --toolbar-padding: 0.5rem;
+    --standard-padding: 0.5rem;
     --separator: 0.1rem solid var(--color-dimmed);
+    --blog-width: min(93vw, 40rem);
 }
 
 body {
@@ -33,7 +34,7 @@ h6 {
 /* SIDEBAR */
 
 .sidebar {
-    padding-top: calc(var(--toolbar-height) + (var(--toolbar-padding) * 2));
+    padding-top: calc(var(--toolbar-height) + (var(--standard-padding) * 2));
     background-color: var(--color-dark);
     width: 11rem;
     height: 100vh;
@@ -48,14 +49,13 @@ h6 {
 
 .sidebar ul {
     list-style-type: none;
-    padding: 0.5rem;
+    padding: var(--standard-padding);
     margin: 0;
     border-top: var(--separator);
 }
 
 .sidebar ul li {
-    border-radius: 0.2rem;
-    padding: 0.5rem;
+    padding: var(--standard-padding);
     transition: background-color 0.1s;
 }
 
@@ -68,7 +68,7 @@ h6 {
 
 li>a>.bx {
     color: var(--color-light);
-    padding-right: 0.5rem;
+    padding-right: var(--standard-padding);
 }
 
 /* CONTENT */
@@ -81,7 +81,7 @@ li>a>.bx {
 /* TOOLBAR */
 
 .toolbar {
-    padding: var(--toolbar-padding);
+    padding: var(--standard-padding);
     height: var(--toolbar-height);
     width: 100%;
     background-color: var(--color-dark);
@@ -99,7 +99,6 @@ li>a>.bx {
 }
 
 .button#menu-toggle {
-    border-radius: 0.2rem;
     height: 100%;
     width: 2.5rem;
     background-color: var(--color-dark);
@@ -118,7 +117,7 @@ li>a>.bx {
 
 .template {
     padding: 1.25rem;
-    width: min(93vw, 40rem);
+    width: var(--blog-width);
     background-color: var(--color-dark);
     height: calc(100vh - 5rem);
 }
@@ -128,16 +127,16 @@ li>a>.bx {
 .column-title {
     color: var(--color-light);
     font-weight: 500;
-    width: min(93vw, 40rem);
+    width: var(--blog-width);
 }
 
 .column-paragraph {
     color: var(--color-light);
-    width: min(93vw, 40rem);
+    width: var(--blog-width);
 }
 
 .column-image {
-    width: min(93vw, 40rem);
+    width: var(--blog-width);
 }
 
 .separator {
