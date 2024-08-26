@@ -16,6 +16,7 @@
 }
 
 body {
+    background-color: var(--color-dark);
     margin: 0;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -34,11 +35,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .main {
-    background-color: var(--color-dark);
     width: 100%;
 }
 
 .template {
     padding: var(--standard-padding);
-    background-color: var(--color-dark);
 }

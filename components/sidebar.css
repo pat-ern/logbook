@@ -7,7 +7,6 @@
 
 .sidebar {
     width: 12rem;
-    background-color: var(--color-dark);
     color: var(--color-dark);
     border-right: var(--separator);
 }
@@ -31,7 +30,6 @@
     text-wrap: nowrap;
     user-select: none;
     padding: var(--standard-padding);
-    background-color: var(--color-dark);
     border-radius: var(--border-radius);
 }
 

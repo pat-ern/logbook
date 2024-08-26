@@ -4,7 +4,7 @@
     padding: var(--standard-padding);
     height: var(--toolbar-height);
     width: 100%;
-    background-color: var(--color-dark);
+    background-color: inherit;
     color: var(--color-dark);
     display: inline-flex;
     align-items: center;
@@ -22,7 +22,7 @@
 .button#menu-toggle {
     height: 100%;
     width: 2.5rem;
-    background-color: var(--color-dark);
+    background-color: inherit;
     border: none;
     color: var(--color-dimmed);
     display: inline-block;
@@ -33,7 +33,7 @@
     margin-left: auto;
     height: 100%;
     width: 2.5rem;
-    background-color: var(--color-dark);
+    background-color: inherit;
     border: none;
     color: var(--color-dimmed);
     display: inline-block;
