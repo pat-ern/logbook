@@ -1,11 +1,5 @@
 /* BLOG */
 
-.column-title {
-    color: var(--color-light);
-    font-weight: 600;
-    margin-bottom: calc(var(--standard-padding) *2);
-}
-
 .card-paragraph {
     line-height: 1.2;
     color: var(--color-light);

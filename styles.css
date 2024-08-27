@@ -18,9 +18,9 @@
 
 body {
     margin: 0;
-    /* font-family: 'PT Sans', sans-serif; */
+    font-family: 'Helvetica', sans-serif;
     font-style: normal;
-    font-size: 17px;
+    font-size: 15px;
     color: var(--color-dark);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -61,7 +61,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 .card-title {
     color: var(--color-light);
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: calc(var(--standard-padding) *2);
 }
 

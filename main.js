@@ -27,12 +27,13 @@ const TOOLBAR_TITLE = document.querySelector('.toolbar-title');
 const THEME_BUTTON = document.getElementById('theme-toggle');
 const THEME_ICON = THEME_BUTTON.querySelector('i');
 
-
+const GITHUB_BASE = 'https://raw.githubusercontent.com/pat-ern/';
+const BLOG_PATH = 'md-for-fetch/main/';
 // -----------------------------------------------------------------
 
-function fetchBlogContent(id) {
-    const base = "https://raw.githubusercontent.com/pat-ern/md-for-fetch/main/";
-    fetch(base + id)
+function fetchBlogContent(item) {
+    const base = GITHUB_BASE + BLOG_PATH;
+    fetch(base + item)
     .then(response => response.text())
     .then(mdContent => {
 
@@ -58,6 +59,22 @@ function fetchBlogContent(id) {
     .catch(error => console.error('Error al obtener el archivo:', error));
 }
 
+function fetchIndex() {
+    const base = GITHUB_BASE + BLOG_PATH + 'index';
+    fetch(base)
+    .then(response => response.text())
+    .then(mdContent => {
+        let index = mdContent.split('\n');
+        index = index.filter(item => item !== '');
+        // sort desc
+        index.sort((a, b) => b.localeCompare(a));
+        index.forEach(item => {
+            fetchBlogContent(item);
+        })
+    })
+    .catch(error => console.error('Error al obtener el archivo:', error));
+}
+
 // -----------------------------------------------------------------
 
 /**
@@ -71,27 +88,27 @@ const MENU = [
             renderBlog();
         }
     },
-    {
-        name: 'photography',
-        icon: 'bx bx-landscape',
-        callback: () => {
-            defaultRenders('photography');
-        }
-    },
-    {
-        name: 'clips',
-        icon: 'bx bx-video-recording',
-        callback: () => {
-            defaultRenders('clips');
-        }
-    },
-    {
-        name: 'sketchbook',
-        icon: 'bx bx-pen',
-        callback: () => {
-            defaultRenders('sketchbook');
-        }
-    },
+    // {
+    //     name: 'photography',
+    //     icon: 'bx bx-landscape',
+    //     callback: () => {
+    //         defaultRenders('photography');
+    //     }
+    // },
+    // {
+    //     name: 'clips',
+    //     icon: 'bx bx-video-recording',
+    //     callback: () => {
+    //         defaultRenders('clips');
+    //     }
+    // },
+    // {
+    //     name: 'sketchbook',
+    //     icon: 'bx bx-pen',
+    //     callback: () => {
+    //         defaultRenders('sketchbook');
+    //     }
+    // },
     {
         name: 'music',
         icon: 'bx bx-music',
@@ -99,20 +116,20 @@ const MENU = [
             renderMusic();
         }
     },
-    {
-        name: 'comments',
-        icon: 'bx bx-bible',	
-        callback: () => {
-            defaultRenders('comments');
-        }
-    },
-    {
-        name: 'contact',
-        icon: 'bx bx-message-dots',
-        callback: () => {
-            defaultRenders('contact');
-        }
-    }
+    // {
+    //     name: 'comments',
+    //     icon: 'bx bx-bible',	
+    //     callback: () => {
+    //         defaultRenders('comments');
+    //     }
+    // },
+    // {
+    //     name: 'contact',
+    //     icon: 'bx bx-message-dots',
+    //     callback: () => {
+    //         defaultRenders('contact');
+    //     }
+    // }
 ]
 
 // -----------------------------------------------------------------
@@ -216,8 +233,7 @@ function initThemeButtonListener() {
  */
 function renderBlog() {
     defaultRenders('blog');
-    fetchBlogContent('001');
-    fetchBlogContent('002');
+    fetchIndex();
 }
 
 /**
@@ -228,7 +244,7 @@ function renderBlog() {
  */
 function addTitle(title, card) {
     const header = document.createElement('h3');
-    header.classList.add('column-title');
+    header.classList.add('card-title');
     header.textContent = title;
     card.appendChild(header);
 }
