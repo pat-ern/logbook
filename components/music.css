@@ -1,8 +1,6 @@
 audio {
-    border-radius: 0.25rem;
     width: 100%;
     height: 2rem;
-    background-color: #f1f3f4;
     margin-bottom: var(--standard-padding);
     color: var(--color-dimmed);
 }

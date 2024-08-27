@@ -13,6 +13,7 @@ const DARK_THEME = 'dark';
 const MOON_ICON = 'bx-moon';
 const LIGHT_THEME = 'light';
 const SUN_ICON = 'bx-sun';
+const EINK_THEME = 'eink';
 
 const TEMPLATE = document.querySelector('.template');
 
@@ -25,6 +26,7 @@ const MENU_ITEMS = document.querySelectorAll('.menu-item');
 const MENU_BUTTON = document.getElementById('menu-toggle');
 const TOOLBAR_TITLE = document.querySelector('.toolbar-title');
 const THEME_BUTTON = document.getElementById('theme-toggle');
+const EINK_BUTTON = document.getElementById('eink-toggle');
 const THEME_ICON = THEME_BUTTON.querySelector('i');
 
 const GITHUB_BASE = 'https://raw.githubusercontent.com/pat-ern/';
@@ -180,39 +182,51 @@ function initMenuButtonListener() {
     });
 }
 
-function updateIcon(theme) {
-    if (theme === 'light') {
-        THEME_ICON.classList.remove(MOON_ICON);
-        THEME_ICON.classList.add(SUN_ICON);
-    } else {
-        THEME_ICON.classList.remove(SUN_ICON);
-        THEME_ICON.classList.add(MOON_ICON);
-    }
-}
-
 // -----------------------------------------------------------------
 // THEME FUNCTIONS
 
-function applyTheme(theme) {
-    updateIcon(theme);
+function applyTheme(theme, fromInit) {
+    toggleIcon(theme === DARK_THEME ? MOON_ICON : SUN_ICON, fromInit);
     window.localStorage.setItem(THEME_KEY, theme);
     const THEME_LINK = document.getElementById('theme-link');
     THEME_LINK.href = `assets/themes/${theme}-theme.css`;
 }
 
+function applyEinkTheme() {
+    window.localStorage.setItem(THEME_KEY, EINK_THEME);
+    const THEME_LINK = document.getElementById('theme-link');
+    THEME_LINK.href = `assets/themes/${EINK_THEME}-theme.css`;
+}
+
 function loadTheme() {
     const CURRENT_THEME = window.localStorage.getItem(THEME_KEY);
     if (CURRENT_THEME) {
-        applyTheme(CURRENT_THEME);
+        applyTheme(CURRENT_THEME, true);
     } else {
-        applyTheme(DARK_THEME);
+        applyTheme(DARK_THEME, true);
     }
 }
 
 function toggleTheme() {
     let theme = window.localStorage.getItem(THEME_KEY);
     theme = theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
-    applyTheme(theme);
+    applyTheme(theme, false);
+}
+
+/**
+ * @param {string} icon 
+ * @param {boolean} fromInit 
+ */
+function toggleIcon(icon, fromInit) {
+    if(fromInit) {
+        THEME_ICON.classList.add(icon);
+        return;
+    }
+    if (icon === MOON_ICON) {
+        THEME_ICON.classList.replace(MOON_ICON, SUN_ICON);
+    } else {
+        THEME_ICON.classList.replace(SUN_ICON, MOON_ICON);
+    }
 }
 
 /**
@@ -221,7 +235,25 @@ function toggleTheme() {
  * @return {void}
  */
 function initThemeButtonListener() {
+
     THEME_BUTTON.addEventListener('click', toggleTheme);
+
+    EINK_BUTTON.addEventListener('click', applyEinkTheme);
+
+    THEME_BUTTON.addEventListener('mouseover', () => {
+        const icon = THEME_ICON.classList.contains(MOON_ICON) ? MOON_ICON : SUN_ICON;
+        toggleIcon(icon, false);
+    });
+    
+    THEME_BUTTON.addEventListener('mouseout', () => {
+        const icon = THEME_ICON.classList.contains(SUN_ICON) ? SUN_ICON : MOON_ICON;
+        if (icon === SUN_ICON && window.localStorage.getItem(THEME_KEY) === LIGHT_THEME) {
+            return;
+        } else if (icon === MOON_ICON && window.localStorage.getItem(THEME_KEY) === DARK_THEME) {
+            return;
+        }
+        toggleIcon(icon, false);
+    });
 }
 
 // -----------------------------------------------------------------
@@ -383,3 +415,4 @@ initMenuButtonListener();
 renderLastPage();
 loadTheme();
 initThemeButtonListener();
+
