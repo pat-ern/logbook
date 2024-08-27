@@ -1,21 +1,12 @@
 /* BLOG */
 
-.blog-box {
-    overflow: auto;
-    height: calc(100vh - var(--toolbar-height) - var(--standard-padding)*2);
-    padding: calc(var(--standard-padding) *2);
-    width: min(100%, 35rem);
-    background-color: var(--surface-hover);
-    border-radius: var(--border-radius);
-}
-
 .column-title {
     color: var(--color-light);
     font-weight: 600;
     margin-bottom: calc(var(--standard-padding) *2);
 }
 
-.column-paragraph {
+.card-paragraph {
     line-height: 1.2;
     color: var(--color-light);
     text-align: justify;
@@ -24,11 +15,4 @@
 
 .separator {
     border-color: var(--color-dimmed);
-}
-
-.blog-date {
-    color: var(--color-light);
-    font-weight: 500;
-    font-style: italic;
-    text-align: end;
 }

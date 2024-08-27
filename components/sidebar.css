@@ -10,19 +10,19 @@
 }
 
 .logo {
-    background-image: linear-gradient(to right, var(--gradient-start) 50%, var(--gradient-end));
+    background-image: linear-gradient(to right, var(--gradient-start) 35%, var(--gradient-end));
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
     padding: var(--standard-padding);
     width: 100%;
     text-transform: uppercase;
-    font-size: 1.3rem;
+    font-size: 1rem;
     user-select: none;
     font-weight: 700;
-    text-wrap: nowrap;
+    text-wrap: wrap;
     &:hover {
-        background-image: linear-gradient(to left, var(--gradient-start)  50%, var(--gradient-end));
+        background-image: linear-gradient(to left, var(--gradient-start)  35%, var(--gradient-end));
     }
 }
 

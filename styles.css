@@ -1,5 +1,6 @@
 @import 'assets/boxicons/css/boxicons.min.css';
 @import 'components/blog.css';	
+@import 'components/music.css';
 @import 'components/sidebar.css';
 @import 'components/toolbar.css';
 
@@ -17,10 +18,14 @@
 
 body {
     margin: 0;
-    font-family: 'PT Sans', sans-serif;
+    /* font-family: 'PT Sans', sans-serif; */
     font-style: normal;
-    font-size: 15px;
+    font-size: 17px;
     color: var(--color-dark);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -41,4 +46,71 @@ h1, h2, h3, h4, h5, h6, p {
 
 .template {
     padding: var(--standard-padding);
+    height: calc(100vh - var(--toolbar-height) - var(--standard-padding)*2);
+    overflow: auto; 
+}
+
+.post-card {
+    overflow: auto;
+    padding: calc(var(--standard-padding) *2);
+    width: min(100%, 35rem);
+    background-color: var(--surface-hover);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--standard-padding);
+}
+
+.card-title {
+    color: var(--color-light);
+    font-weight: 600;
+    margin-bottom: calc(var(--standard-padding) *2);
+}
+
+.card-footer {
+    line-height: 1.2;
+    color: var(--color-light);
+    font-weight: 500;
+    font-style: italic;
+    text-align: end;
+}
+
+.icon-button {
+    height: 100%;
+    width: 2.5rem;
+    background-color: inherit;
+    border: none;
+    color: var(--color-dimmed);
+    display: inline-block;
+    cursor: pointer;
+    &>.bx {
+        color: var(--color-soft);
+        font-size: 1.75rem;
+        &:hover {
+            color: var(--color-light);
+        }
+    }
+}
+
+.open-element {
+    transform: translate(-1.7rem, -2.9rem);
+    position: absolute;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    border-radius: 30px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    background-color: var(--color-dimmed);
+}   
+
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-corner,
+::-webkit-resizer {
+    display: none;
 }

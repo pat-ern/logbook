@@ -35,16 +35,25 @@ function fetchBlogContent(id) {
     fetch(base + id)
     .then(response => response.text())
     .then(mdContent => {
+
+        const card = document.createElement('div');
+        card.classList.add('post-card');
+
         const content = mdContent.split('\n\n');
+
         const title = content[0];
+        addTitle(title, card);
+
         const length = content.length;
-        const date = content[length - 1];
         const paragraphs = content.slice(1, length - 1);
-        addTitle(title);
         paragraphs.forEach(paragraph => {
-            addParagraph(paragraph);
+            addParagraph(paragraph, card);
         })
-        addPostDate(date);
+
+        const date = content[length - 1];
+        addPostDate(date, card);
+
+        TEMPLATE.appendChild(card);
     })
     .catch(error => console.error('Error al obtener el archivo:', error));
 }
@@ -66,7 +75,7 @@ const MENU = [
         name: 'photography',
         icon: 'bx bx-landscape',
         callback: () => {
-            defaultRenders('photography');	
+            defaultRenders('photography');
         }
     },
     {
@@ -87,7 +96,7 @@ const MENU = [
         name: 'music',
         icon: 'bx bx-music',
         callback: () => {
-            defaultRenders('music');
+            renderMusic();
         }
     },
     {
@@ -207,20 +216,8 @@ function initThemeButtonListener() {
  */
 function renderBlog() {
     defaultRenders('blog');
-    addBlogBox();
     fetchBlogContent('001');
     fetchBlogContent('002');
-}
-
-/**
- * Creates a new div element with the class 'blog-box' and appends it to the TEMPLATE element.
- *
- * @return {void}
- */
-function addBlogBox() {
-    const blogBox = document.createElement('div');
-    blogBox.classList.add('blog-box');
-    TEMPLATE.appendChild(blogBox);
 }
 
 /**
@@ -229,12 +226,11 @@ function addBlogBox() {
  * @param {string} title - The text content of the title element.
  * @return {void}
  */
-function addTitle(title) {
-    const blogBox = document.querySelector('.blog-box');
+function addTitle(title, card) {
     const header = document.createElement('h3');
     header.classList.add('column-title');
     header.textContent = title;
-    blogBox.appendChild(header);
+    card.appendChild(header);
 }
 
 /**
@@ -243,12 +239,11 @@ function addTitle(title) {
  * @param {string} text - The text content of the paragraph element.
  * @return {void}
  */
-function addParagraph(text) {
-    const blogBox = document.querySelector('.blog-box');
+function addParagraph(text, card) {
     const paragraph = document.createElement('p');
-    paragraph.classList.add('column-paragraph');
+    paragraph.classList.add('card-paragraph');
     paragraph.textContent = text;
-    blogBox.appendChild(paragraph);
+    card.appendChild(paragraph);
 }
 
 /**
@@ -256,13 +251,68 @@ function addParagraph(text) {
  *
  * @return {void}
  */
-function addPostDate(date) {
-    const blogBox = document.querySelector('.blog-box');
+function addPostDate(date, card) {
     const paragraph = document.createElement('p');
-    paragraph.classList.add('column-paragraph');
-    paragraph.classList.add('blog-date');
+    paragraph.classList.add('card-footer');
     paragraph.textContent = date;
-    blogBox.appendChild(paragraph);
+    card.appendChild(paragraph);
+}
+
+//-----------------------------------------------------------------
+// MUSIC RENDERING FUNCTIONS
+
+/**
+ * Renders the music page.
+ * @return {void} This function does not return anything.
+ */
+function renderMusic() {
+    defaultRenders('music');
+
+    // CARD
+    const card = document.createElement('div');
+    card.classList.add('post-card');
+    
+    // CARD TITLE
+    const cardTitle = document.createElement('h3');
+    cardTitle.classList.add('card-title');
+    cardTitle.textContent = 'Sonata for Piano';
+    card.appendChild(cardTitle);
+
+    // CARD BODY
+    const cardBody = document.createElement('div');
+    cardBody.classList.add('card-body');
+    card.appendChild(cardBody);
+
+    // AUDIO
+    const audio = document.createElement('audio');
+    audio.controls = true;
+    audio.autoplay = false;
+
+    const source = document.createElement('source');
+    source.src = 'assets/audio/childish-gambino-3005.mp3';
+    source.type = 'audio/mpeg';
+    audio.appendChild(source);
+
+    cardBody.appendChild(audio);
+
+    // download button
+    const anchor = document.createElement('a');
+    anchor.classList.add('open-element');
+    anchor.href = 'assets/audio/childish-gambino-3005.mp3';
+    anchor.download = 'childish-gambino-3005.mp3';
+
+    const downloadButton = document.createElement('button');
+    downloadButton.classList.add('icon-button');
+    const icon = document.createElement('i');
+    icon.classList.add('bx', 'bx-window-open');
+    downloadButton.appendChild(icon);
+    anchor.appendChild(downloadButton);
+    cardBody.appendChild(anchor);
+
+    addPostDate('January 1, 2020', card);
+
+    TEMPLATE.appendChild(card);
+
 }
 
 // -----------------------------------------------------------------

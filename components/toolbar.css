@@ -24,39 +24,6 @@
     }
 }
 
-.button#menu-toggle {
-    height: 100%;
-    width: 2.5rem;
-    background-color: inherit;
-    border: none;
-    color: var(--color-dimmed);
-    display: inline-block;
-    cursor: pointer;
-}
-
-.button#theme-toggle {
+.icon-button#theme-toggle {
     margin-left: auto;
-    height: 100%;
-    width: 2.5rem;
-    background-color: inherit;
-    border: none;
-    color: var(--color-dimmed);
-    display: inline-block;
-    cursor: pointer;
-}
-
-#menu-toggle>.bx {
-    color: var(--color-soft);
-    font-size: 1.75rem;
-    &:hover {
-        color: var(--color-light);
-    }
-}
-
-#theme-toggle>.bx {
-    color: var(--color-soft);
-    font-size: 1.75rem;
-    &:hover {
-        color: var(--color-light);
-    }
 }
