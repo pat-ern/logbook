@@ -35,12 +35,14 @@
     width: 12rem;
     color: var(--color-dark);
     border-right: var(--separator);
-    background-color: var(--color-darker);
+    background-color: var(--color-dark);
     z-index: 1;
+    box-shadow: none;
 }
 
 .sidebar.show {
     transform: translateX(0);
+    box-shadow: 3px 0 5px rgba(0, 0, 0, 0.2); /* Sombra al lado derecho */
     /* border-right: none; */
 }
 

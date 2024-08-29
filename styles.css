@@ -1,4 +1,3 @@
-@import 'assets/boxicons/css/boxicons.min.css';
 @import 'components/blog.css';	
 @import 'components/music.css';
 @import 'components/sidebar.css';
@@ -7,7 +6,7 @@
 :root {
     --toolbar-height: 3rem;
     --standard-padding: 0.5rem;
-    --separator: 0.1rem solid var(--surface-border);
+    --separator: 0.05rem solid var(--surface-border);
     --border-radius: 0.25rem;
 }
 
@@ -21,7 +20,6 @@ body {
     font-family: 'Helvetica', sans-serif;
     font-style: normal;
     font-size: 15px;
-    color: var(--color-dark);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -34,7 +32,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .layout {
-    background-color: var(--color-dark);
+    background-color: var(--color-darker);
     display: flex;
     height: 100vh;
 }
