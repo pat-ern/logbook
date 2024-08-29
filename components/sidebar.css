@@ -74,3 +74,16 @@
         color: var(--color-light);
     }
 }
+
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.footer-text {
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--color-soft);
+    padding: var(--standard-padding);
+}
