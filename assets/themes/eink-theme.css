@@ -3,10 +3,12 @@
     --gradient-start: #000000;
     --gradient-end: #000000;
 
+    --surface-border: #000000;
     --surface-hover: #fff;
     --color-white: #000000;
     --color-light: #000000;
     --color-soft: #000000;
     --color-dimmed: #fff;
     --color-dark: #fff;
+    --color-darker: #fff;
 }

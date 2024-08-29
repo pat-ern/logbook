@@ -31,14 +31,17 @@
 }
 
 .sidebar {
+    transform: translateX(-12rem);
     width: 12rem;
     color: var(--color-dark);
     border-right: var(--separator);
+    background-color: var(--color-darker);
+    z-index: 1;
 }
 
-.sidebar.hidden {
-    width: 0;
-    border-right: none;
+.sidebar.show {
+    transform: translateX(0);
+    /* border-right: none; */
 }
 
 .sidebar ul {

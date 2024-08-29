@@ -21,6 +21,7 @@ const TEMPLATE = document.querySelector('.template');
 const SIDEBAR = document.querySelector('.sidebar');
 const MENU_LIST = document.querySelector('.menu-list');
 const MENU_ITEMS = document.querySelectorAll('.menu-item');
+const CLOSE_BUTTON = document.getElementById('close-menu');
 
 // TOOLBAR
 const MENU_BUTTON = document.getElementById('menu-toggle');
@@ -113,7 +114,7 @@ const MENU = [
     // },
     {
         name: 'music',
-        icon: 'bx bx-music',
+        icon: 'bx bxs-playlist',
         callback: () => {
             renderMusic();
         }
@@ -175,10 +176,14 @@ function initMenuButtonListener() {
     MENU_BUTTON.addEventListener('click', function() {
         sidebarVisible = !sidebarVisible; // Cambiamos el estado del menú lateral
         if (sidebarVisible) {
-            SIDEBAR.classList.add('hidden'); // Mostramos el menú lateral
+            SIDEBAR.classList.add('show'); // Mostramos el menú lateral
         } else {
-            SIDEBAR.classList.remove('hidden'); // Ocultamos el menú lateral
+            SIDEBAR.classList.remove('show'); // Ocultamos el menú lateral
         }
+    });
+    CLOSE_BUTTON.addEventListener('click', function() {
+        sidebarVisible = false;
+        SIDEBAR.classList.remove('show');
     });
 }
 

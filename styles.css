@@ -7,7 +7,7 @@
 :root {
     --toolbar-height: 3rem;
     --standard-padding: 0.5rem;
-    --separator: 0.1rem solid var(--color-dimmed);
+    --separator: 0.1rem solid var(--surface-border);
     --border-radius: 0.25rem;
 }
 
@@ -40,6 +40,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .main {
+    position: absolute;
     background-color: inherit;
     width: 100%;
 }
